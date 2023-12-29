@@ -1,28 +1,47 @@
-
-import { StyleSheet, View } from 'react-native';
-import Title from "./src/components/Title";
-import User from "./src/components/User";
-import Users from "./src/components/Users";
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Button,
+  TouchableOpacity,
+  TouchableHighlight,
+  Alert,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 const App = () => {
+  const handleClick = () => {
+    alert("merhaba");
+  };
+
   return (
-    <View style={Styles.container}>
-      <Title text="React Native" color="red" number={1} />
-      <Title text="React Native" color="green" number={2} />
-      <Title text="React Native" color="blue" number={3} />
+    <View style={styles.container}>
+      <Button title="Click Button" onPress={handleClick} />
+      <TouchableOpacity onPress={handleClick}>
+        <Text> Click TouchableOpacity</Text>
+      </TouchableOpacity>
 
-      <User data={{ id: 1, name: "mehmet" }} />
+      <TouchableHighlight
+        activeOpacity={0.6}
+        underlayColor="#DDDDDD"
+        onPress={() => alert("Pressed!")}
+      >
+        <Text>Click TouchableHighlight</Text>
+      </TouchableHighlight>
 
-      <Users data={['ahmet', 'mehmet']} />
+      <TouchableWithoutFeedback onPress={() => alert("Pressed!")}>
+        <Text> Click TouchableWithoutFeedback</Text>
+      </TouchableWithoutFeedback>
     </View>
   );
 };
 
-const Styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
